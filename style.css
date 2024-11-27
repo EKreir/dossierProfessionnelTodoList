@@ -1,0 +1,330 @@
+/* Reset some styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style de base */
+body {
+    background-color: black !important;
+    color: white;
+    font-size: 18px !important;
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: rgba(169, 169, 169, 0.2);
+    padding-top: 20px;
+    transition: transform 0.3s ease;
+    transform: translateX(0); /* Initialement visible */
+}
+
+.navbar-nav {
+    list-style: none;
+}
+
+.navbar-nav .nav-item {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+}
+
+.navbar-brand {
+    color: white !important;
+}
+
+.nav-link {
+    color: white !important;
+    text-decoration: none;
+}
+
+.lien-one {
+    color: black !important;
+    text-decoration: none;
+    background-color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.lien-two {
+    color: black !important;
+    text-decoration: none;
+    background-color: #D78D04;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.lien-three {
+    color: black !important;
+    text-decoration: none;
+    background-color: #45A500;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.lien-four {
+    color: black !important;
+    text-decoration: none;
+    background-color: #A9E1A1;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.lien-five {
+    color: black !important;
+    text-decoration: none;
+    background-color: #F2FF66;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+.lien-six {
+    color: black !important;
+    text-decoration: none;
+    background-color: #CF7373;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+/* Style du bouton hamburger (toggle button) */
+#toggleBtn {
+    position: fixed;
+    background-color: rgba(169, 169, 169, 0.2);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+/* Design de l'icône hamburger */
+.navbar-toggler-icon {
+    display: block;
+    width: 30px !important;
+    height: 3px !important;
+    border-radius: 5px;
+    position: relative;
+}
+
+.navbar-toggler-icon:before,
+.navbar-toggler-icon:after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+}
+
+.navbar-toggler-icon:before {
+    top: -8px;
+}
+
+.navbar-toggler-icon:after {
+    top: 8px;
+}
+
+/* Hide sidebar when toggled */
+.sidebar.active {
+    transform: translateX(-100%);
+}
+
+/* When the sidebar is hidden, move the toggle button to the left */
+.sidebar.active + #toggleBtn {
+    left: 0px;
+}
+
+/* When the sidebar is visible, move the toggle button to the right of the sidebar */
+.sidebar:not(.hidden) + #toggleBtn {
+    left: 0px;
+}
+
+/* Centering h1 */
+h1 {
+    text-align: center;
+}
+
+.text-white {
+    margin-bottom: 80px;
+}
+
+/* Main content styles */
+.content {
+    margin-left: 270px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.task-container {
+    background-color: rgba(169, 169, 169, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#taskInput {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+#addTaskBtn {
+    width: 80%;
+}
+
+/* Style des options de statut et priorité */
+.status-selection, .priority-selection {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.status-options, .priority-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot, .priority-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Style pour les carrés de statut */
+.status-square, .priority-square {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked + .status-dot,
+input[type="radio"]:checked + .priority-dot {
+    border: 2px solid #000;
+}
+
+
+#taskList {
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.list-group-item {
+    background-color: #333 !important;
+    color: white !important;
+    border: none !important;
+    margin-bottom: 10px;
+}
+
+.task-checkbox {
+    margin-right: 10px;
+}
+
+/* Bouton "supprimer" */
+#deleteBtn {
+    width: 15%;
+}
+
+/* Modification pour les petits écrans */
+@media (max-width: 768px) {
+    /* Sidebar sur mobile : cachée par défaut */
+    .sidebar {
+        width: 160px;  /* Réduire la largeur de la sidebar sur mobile */
+        transform: translateX(-100%); /* Initialement cachée */
+        transition: transform 0.3s ease; /* Transition pour afficher/masquer */
+    }
+
+    /* Sidebar visible lorsqu'on clique sur le bouton */
+    .sidebar.active {
+        transform: translateX(0); /* Afficher la sidebar */
+    }
+
+    .content {
+        margin-left: 0; /* Enlever le décalage de la sidebar */
+        padding: 10px;
+        width: 100%;
+    }
+
+    /* Bouton hamburger - positionné en haut à gauche */
+    #toggleBtn {
+        position: fixed;
+        top: 0px;
+        z-index: 1000;
+    }
+
+    .navbar-toggler-icon {
+        width: 30px;
+        height: 3px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    /* Afficher le bouton supprimer sur mobile */
+    #deleteBtn {
+        width: 35%;  /* Utiliser toute la largeur */
+        display: block; /* S'assurer qu'il est visible */
+        margin-top: 15px;
+    }
+
+    /* Tâches */
+    .task-container {
+        width: 90%;  /* Utiliser presque toute la largeur de l'écran */
+        padding: 15px;
+    }
+
+    .task-container ul {
+        width: 100%;
+        padding-left: 0;
+    }
+}
+
+/* Pour les écrans plus larges, rétablir les largeurs normales */
+@media (min-width: 768px) {
+    .sidebar {
+        transform: translateX(0);  /* Sidebar visible */
+    }
+
+    .content {
+        margin-left: 250px;  /* Laisser un espace pour la sidebar */
+        width: calc(100% - 250px); /* Ajuster le contenu */
+    }
+
+    .task-container {
+        width: 60%;  /* Réduire la largeur du container des tâches */
+    }
+
+    #deleteBtn {
+        width: 40%;
+        display: inline-block; /* Afficher le bouton supprimer */
+    }
+}

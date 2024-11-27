@@ -4,10 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>To do list</title>
 </head>
 <body>
-    <h1>Hello world !</h1>
+    <main>
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <h1 class="navbar-brand">Menu</h1>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <h2 class="nav-link">Statut</h2>
+                    <a href="#" class="lien-one" data-status="A faire">A faire ></a>
+                    <br>
+                    <a href="#" class="lien-two" data-status="En cours">En cours ></a>
+                    <br>
+                    <a href="#" class="lien-three" data-status="Fait">Fait ></a>
+                </li>
+                <li class="nav-item">
+                    <h2 class="nav-link">Priorité</h2>
+                    <a href="#" class="lien-four" data-priority="Basse">Basse ></a>
+                    <br>
+                    <a href="#" class="lien-five" data-priority="Moyenne">Moyenne ></a>
+                    <br>
+                    <a href="#" class="lien-six" data-priority="Haute">Haute ></a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Button to toggle sidebar (hamburger icon) -->
+        <button class="btn" id="toggleBtn">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Main content -->
+        <div class="content">
+            <h1 class="text-white">Liste des tâches</h1>
+
+            <!-- Bloc des tâches -->
+            <div class="task-container">
+                <!-- Formulaire pour ajouter une tâche -->
+                <div class="add-task">
+                    <input type="text" id="taskInput" placeholder="Ajouter une tâche" class="form-control">
+
+                    <!-- Choix du statut -->
+<div class="form-group" style="color: white;">
+    <label for="status">Statut :</label>
+    <label>
+        <input type="radio" name="status" value="A faire" id="status-afaire">
+        <span class="status-square" style="background-color: white;"></span>
+    </label>
+    <label>
+        <input type="radio" name="status" value="En cours" id="status-encours">
+        <span class="status-square" style="background-color: #D78D04;"></span>
+    </label>
+    <label>
+        <input type="radio" name="status" value="Fait" id="status-fait">
+        <span class="status-square" style="background-color: #45A500;"></span>
+    </label>
+</div>
+
+<!-- Choix de la priorité -->
+<div class="form-group" style="color: white;">
+    <label for="priority">Priorité :</label>
+    <label>
+        <input type="radio" name="priority" value="Basse" id="priority-basse">
+        <span class="priority-square" style="background-color: #A9E1A1;"></span>
+    </label>
+    <label>
+        <input type="radio" name="priority" value="Moyenne" id="priority-moyenne">
+        <span class="priority-square" style="background-color: #F2FF66;"></span>
+    </label>
+    <label>
+        <input type="radio" name="priority" value="Haute" id="priority-haute">
+        <span class="priority-square" style="background-color: #CF7373;"></span>
+    </label>
+</div>
+
+
+                    <button id="addTaskBtn" class="btn btn-primary mt-2">Ajouter</button>
+                </div>
+
+                <!-- Liste des tâches -->
+                <ul id="taskList" class="list-group mt-3">
+                    <!-- Les tâches seront ajoutées ici -->
+                </ul>
+
+                <button id="deleteBtn" class="btn btn-danger mt-3">Supprimer</button>
+            </div>
+        </div>
+    </main>
+
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
