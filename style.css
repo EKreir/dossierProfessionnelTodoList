@@ -323,23 +323,48 @@ input[type="radio"]:checked + .priority-dot {
 }
 
 
-/* Pour les écrans plus larges, rétablir les largeurs normales */
-@media (min-width: 768px) {
+/* Media Queries pour les petits écrans */
+@media (max-width: 767px) {
+    /* Sidebar : cachée par défaut */
     .sidebar {
-        transform: translateX(0);  /* Sidebar visible */
+        transform: translateX(-100%); /* Masquer la sidebar */
     }
 
+    .sidebar.active {
+        transform: translateX(0); /* Afficher la sidebar */
+    }
+
+    /* Bouton hamburger visible sur mobile */
+    #toggleBtn {
+        display: block;
+        left: 20px;
+        top: 20px;
+        position: fixed; /* S'assurer qu'il est bien au-dessus de la sidebar */
+        z-index: 1000;
+    }
+
+    /* Modifier l'apparence du bouton hamburger (toggle) */
+    .navbar-toggler-icon {
+        background-color: white;
+    }
+
+    /* L'icône hamburger est centrée et visible */
+    .navbar-toggler-icon:before, .navbar-toggler-icon:after {
+        background-color: white;
+    }
+
+    /* Le contenu principal (task-container) occupe toute la largeur sans marge à gauche */
     .content {
-        margin-left: 250px;  /* Laisser un espace pour la sidebar */
-        width: calc(100% - 250px); /* Ajuster le contenu */
+        margin-left: 0;
     }
 
-    .task-container {
-        width: 60%;  /* Réduire la largeur du container des tâches */
+    /* Ajuster la taille des liens */
+    .lien-one, .lien-two, .lien-three, .lien-four, .lien-five, .lien-six {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 
     #deleteBtn {
-        width: 40%;
-        display: inline-block; /* Afficher le bouton supprimer */
+        width: 55%;
     }
 }
