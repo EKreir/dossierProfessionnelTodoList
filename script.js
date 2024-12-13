@@ -127,11 +127,46 @@ taskList.addEventListener("click", function(e) {
 
             // Mettre à jour le texte de la tâche
             taskItem.querySelector(".task-text").textContent = editTaskInput.value;
-            taskItem.setAttribute("data-status", document.querySelector('input[name="editStatus"]:checked').value);
-            taskItem.setAttribute("data-priority", document.querySelector('input[name="editPriority"]:checked').value);
+            // Mettre à jour le statut et la priorité
+    const newStatus = document.querySelector('input[name="editStatus"]:checked').value;
+    const newPriority = document.querySelector('input[name="editPriority"]:checked').value;
+    
+    // Mettre à jour les attributs data
+    taskItem.setAttribute("data-status", newStatus);
+    taskItem.setAttribute("data-priority", newPriority);
 
-            // Fermer la modale
-            editModal.style.display = "none";
+    // Mettre à jour les couleurs des indicateurs de statut et de priorité
+    const statusDot = taskItem.querySelector(".status-dot");
+    const priorityDot = taskItem.querySelector(".priority-dot");
+
+    // Mettre à jour la couleur du statut
+    switch (newStatus) {
+        case "A faire":
+            statusDot.style.backgroundColor = "white";
+            break;
+        case "En cours":
+            statusDot.style.backgroundColor = "#D78D04";
+            break;
+        case "Fait":
+            statusDot.style.backgroundColor = "#45A500";
+            break;
+    }
+
+    // Mettre à jour la couleur de la priorité
+    switch (newPriority) {
+        case "Basse":
+            priorityDot.style.backgroundColor = "#A9E1A1";
+            break;
+        case "Moyenne":
+            priorityDot.style.backgroundColor = "#F2FF66";
+            break;
+        case "Haute":
+            priorityDot.style.backgroundColor = "#CF7373";
+            break;
+    }
+
+    // Fermer la modale
+    editModal.style.display = "none";
         };
     }
 });
