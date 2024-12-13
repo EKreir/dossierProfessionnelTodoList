@@ -211,12 +211,11 @@ h1 {
     gap: 10px;
 }
 
-
 .status-dot, .priority-dot {
-    width: 12px;  /* Taille réduite pour mieux s'intégrer à la tâche */
-    height: 12px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    margin-right: 8px;  /* Espacement entre les cercles et le texte de la tâche */
+    margin-right: 5px;
 }
 
 /* Style pour les carrés de statut */
@@ -234,7 +233,6 @@ input[type="radio"]:checked + .priority-dot {
     border: 2px solid #000;
 }
 
-
 #taskList {
     margin-top: 20px;
     padding-left: 0;
@@ -245,28 +243,15 @@ input[type="radio"]:checked + .priority-dot {
     color: white !important;
     border: none !important;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center; /* Aligner les éléments à l'horizontale */
-    padding-left: 10px;
 }
 
 .task-checkbox {
     margin-right: 10px;
 }
 
-.list-group-item span {
-    display: inline-flex;
-    align-items: center;
-}
-
-.list-group-item .status-dot,
-.list-group-item .priority-dot {
-    margin-right: 8px; /* Ajuster l'espacement si nécessaire */
-}
-
-/* Ajuster l'espacement entre les tâches */
-.list-group-item {
-    padding: 10px 15px;
+.task-text {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 /* Bouton "supprimer" */
@@ -274,58 +259,52 @@ input[type="radio"]:checked + .priority-dot {
     width: 15%;
 }
 
-/* Modification pour les petits écrans */
-@media (max-width: 768px) {
-    /* Sidebar sur mobile : cachée par défaut */
-    .sidebar {
-        width: 160px;  /* Réduire la largeur de la sidebar sur mobile */
-        transform: translateX(-100%); /* Initialement cachée */
-        transition: transform 0.3s ease; /* Transition pour afficher/masquer */
-    }
-
-    /* Sidebar visible lorsqu'on clique sur le bouton */
-    .sidebar.active {
-        transform: translateX(0); /* Afficher la sidebar */
-    }
-
-    .content {
-        margin-left: 0; /* Enlever le décalage de la sidebar */
-        padding: 10px;
-        width: 100%;
-    }
-
-    /* Bouton hamburger - positionné en haut à gauche */
-    #toggleBtn {
-        position: fixed;
-        top: 0px;
-        z-index: 1000;
-    }
-
-    .navbar-toggler-icon {
-        width: 30px;
-        height: 3px;
-        background-color: white;
-        border-radius: 5px;
-    }
-
-    /* Afficher le bouton supprimer sur mobile */
-    #deleteBtn {
-        width: 35%;  /* Utiliser toute la largeur */
-        display: block; /* S'assurer qu'il est visible */
-        margin-top: 15px;
-    }
-
-    /* Tâches */
-    .task-container {
-        width: 90%;  /* Utiliser presque toute la largeur de l'écran */
-        padding: 15px;
-    }
-
-    .task-container ul {
-        width: 100%;
-        padding-left: 0;
-    }
+/* Style pour la fenêtre modale */
+.modal {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 1; /* Au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Ombre de fond */
+    padding-top: 60px;
 }
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 500px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style pour les champs de formulaire */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group input[type="text"], .form-group input[type="radio"] {
+    margin-right: 10px;
+}
+
 
 /* Pour les écrans plus larges, rétablir les largeurs normales */
 @media (min-width: 768px) {

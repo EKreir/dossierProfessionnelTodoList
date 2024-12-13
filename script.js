@@ -5,15 +5,19 @@ const taskInput = document.getElementById("taskInput");
 const addTaskBtn = document.getElementById("addTaskBtn");
 const deleteBtn = document.getElementById("deleteBtn");
 const taskList = document.getElementById("taskList");
+const editModal = document.getElementById("editModal");
+const closeBtn = document.querySelector(".close-btn");
+const editTaskForm = document.getElementById("editTaskForm");
+const editTaskInput = document.getElementById("editTaskInput");
 
 // Fonction pour afficher/masquer la sidebar
 toggleBtn.addEventListener("click", function() {
-    sidebar.classList.toggle("active"); // Ajoute ou retire la classe "active" pour afficher/masquer la sidebar
+    sidebar.classList.toggle("active");
 });
 
 // Fonction pour ajouter une tâche
 addTaskBtn.addEventListener("click", function() {
-    const taskText = taskInput.value.trim(); // Récupère le texte de la tâche
+    const taskText = taskInput.value.trim();
 
     // Récupérer la valeur du statut
     const statusRadios = document.querySelectorAll('input[name="status"]');
@@ -23,9 +27,7 @@ addTaskBtn.addEventListener("click", function() {
     const priorityRadios = document.querySelectorAll('input[name="priority"]');
     const priority = Array.from(priorityRadios).find(radio => radio.checked)?.value;
 
-    // Si le champ n'est pas vide et un statut et priorité sont sélectionnés
     if (taskText !== "" && status && priority) {
-        // Créer un nouvel élément de liste pour la tâche
         const li = document.createElement("li");
         li.classList.add("list-group-item");
 
@@ -34,11 +36,12 @@ addTaskBtn.addEventListener("click", function() {
         checkbox.type = "checkbox";
         checkbox.classList.add("task-checkbox");
 
-        // Créer le texte de la tâche
+        // Créer le texte de la tâche avec la classe task-text
         const taskLabel = document.createElement("span");
+        taskLabel.classList.add("task-text");
         taskLabel.textContent = taskText;
 
-        // Créer les indicateurs de statut et priorité (petites cases colorées)
+        // Créer les indicateurs de statut et priorité
         const statusDot = document.createElement("span");
         statusDot.classList.add("status-dot");
         switch (status) {
@@ -82,8 +85,8 @@ addTaskBtn.addEventListener("click", function() {
 
         // Réinitialiser l'input et la sélection
         taskInput.value = "";
-        statusRadios.forEach(radio => radio.checked = false); // Réinitialiser les boutons radio du statut
-        priorityRadios.forEach(radio => radio.checked = false); // Réinitialiser les boutons radio de la priorité
+        statusRadios.forEach(radio => radio.checked = false);
+        priorityRadios.forEach(radio => radio.checked = false);
     } else {
         alert("Veuillez entrer une tâche et sélectionner un statut et une priorité !");
     }
@@ -91,16 +94,53 @@ addTaskBtn.addEventListener("click", function() {
 
 // Fonction pour supprimer les tâches sélectionnées
 deleteBtn.addEventListener("click", function() {
-    // Récupérer toutes les cases à cocher
     const checkboxes = document.querySelectorAll(".task-checkbox");
-
-    // Parcourir toutes les cases et supprimer celles qui sont cochées
     checkboxes.forEach(function(checkbox) {
         if (checkbox.checked) {
-            checkbox.parentElement.remove(); // Supprimer l'élément parent (la tâche)
+            checkbox.parentElement.remove();
         }
     });
 });
+
+// Fonction pour afficher la fenêtre modale et remplir les champs avec les données de la tâche
+taskList.addEventListener("click", function(e) {
+    if (e.target && e.target.tagName === "SPAN") {
+        const taskItem = e.target.closest("li");
+
+        // Remplir les champs du formulaire avec les valeurs actuelles de la tâche
+        editTaskInput.value = taskItem.querySelector(".task-text").textContent;
+
+        // Préselectionner le statut
+        const status = taskItem.getAttribute("data-status");
+        document.querySelector(`input[name="editStatus"][value="${status}"]`).checked = true;
+
+        // Préselectionner la priorité
+        const priority = taskItem.getAttribute("data-priority");
+        document.querySelector(`input[name="editPriority"][value="${priority}"]`).checked = true;
+
+        // Afficher la modale
+        editModal.style.display = "block";
+
+        // Lorsque le formulaire est soumis
+        editTaskForm.onsubmit = function(e) {
+            e.preventDefault();
+
+            // Mettre à jour le texte de la tâche
+            taskItem.querySelector(".task-text").textContent = editTaskInput.value;
+            taskItem.setAttribute("data-status", document.querySelector('input[name="editStatus"]:checked').value);
+            taskItem.setAttribute("data-priority", document.querySelector('input[name="editPriority"]:checked').value);
+
+            // Fermer la modale
+            editModal.style.display = "none";
+        };
+    }
+});
+
+// Fonction pour fermer la modale
+closeBtn.addEventListener("click", function() {
+    editModal.style.display = "none";
+});
+
 
 // Fonction pour filtrer les tâches par statut ou priorité
 const filterTasks = (status = null, priority = null) => {

@@ -48,39 +48,38 @@
                     <input type="text" id="taskInput" placeholder="Ajouter une tâche" class="form-control">
 
                     <!-- Choix du statut -->
-<div class="form-group" style="color: white;">
-    <label for="status">Statut :</label>
-    <label>
-        <input type="radio" name="status" value="A faire" id="status-afaire">
-        <span class="status-square" style="background-color: white;"></span>
-    </label>
-    <label>
-        <input type="radio" name="status" value="En cours" id="status-encours">
-        <span class="status-square" style="background-color: #D78D04;"></span>
-    </label>
-    <label>
-        <input type="radio" name="status" value="Fait" id="status-fait">
-        <span class="status-square" style="background-color: #45A500;"></span>
-    </label>
-</div>
+                    <div class="form-group" style="color: white;">
+                        <label for="status">Statut :</label>
+                        <label>
+                            <input type="radio" name="status" value="A faire" id="status-afaire">
+                            <span class="status-square" style="background-color: white;"></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="status" value="En cours" id="status-encours">
+                            <span class="status-square" style="background-color: #D78D04;"></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="status" value="Fait" id="status-fait">
+                            <span class="status-square" style="background-color: #45A500;"></span>
+                        </label>
+                    </div>
 
-<!-- Choix de la priorité -->
-<div class="form-group" style="color: white;">
-    <label for="priority">Priorité :</label>
-    <label>
-        <input type="radio" name="priority" value="Basse" id="priority-basse">
-        <span class="priority-square" style="background-color: #A9E1A1;"></span>
-    </label>
-    <label>
-        <input type="radio" name="priority" value="Moyenne" id="priority-moyenne">
-        <span class="priority-square" style="background-color: #F2FF66;"></span>
-    </label>
-    <label>
-        <input type="radio" name="priority" value="Haute" id="priority-haute">
-        <span class="priority-square" style="background-color: #CF7373;"></span>
-    </label>
-</div>
-
+                    <!-- Choix de la priorité -->
+                    <div class="form-group" style="color: white;">
+                        <label for="priority">Priorité :</label>
+                        <label>
+                            <input type="radio" name="priority" value="Basse" id="priority-basse">
+                            <span class="priority-square" style="background-color: #A9E1A1;"></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="priority" value="Moyenne" id="priority-moyenne">
+                            <span class="priority-square" style="background-color: #F2FF66;"></span>
+                        </label>
+                        <label>
+                            <input type="radio" name="priority" value="Haute" id="priority-haute">
+                            <span class="priority-square" style="background-color: #CF7373;"></span>
+                        </label>
+                    </div>
 
                     <button id="addTaskBtn" class="btn btn-primary mt-2">Ajouter</button>
                 </div>
@@ -91,6 +90,45 @@
                 </ul>
 
                 <button id="deleteBtn" class="btn btn-danger mt-3">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Modal pour modifier une tâche -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Modifier la tâche</h2>
+                <form id="editTaskForm">
+                    <div class="form-group">
+                        <label for="editTaskInput">Nouvelle tâche :</label>
+                        <input type="text" id="editTaskInput" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="editStatus">Statut :</label>
+                        <label>
+                            <input type="radio" name="editStatus" value="A faire"> A faire
+                        </label>
+                        <label>
+                            <input type="radio" name="editStatus" value="En cours"> En cours
+                        </label>
+                        <label>
+                            <input type="radio" name="editStatus" value="Fait"> Fait
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPriority">Priorité :</label>
+                        <label>
+                            <input type="radio" name="editPriority" value="Basse"> Basse
+                        </label>
+                        <label>
+                            <input type="radio" name="editPriority" value="Moyenne"> Moyenne
+                        </label>
+                        <label>
+                            <input type="radio" name="editPriority" value="Haute"> Haute
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                </form>
             </div>
         </div>
     </main>
