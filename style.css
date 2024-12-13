@@ -212,10 +212,10 @@ h1 {
 }
 
 .status-dot, .priority-dot {
-    width: 20px;
-    height: 20px;
+    width: 12px;  /* Taille réduite pour mieux s'intégrer à la tâche */
+    height: 12px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 8px;  /* Espacement entre les cercles et le texte de la tâche */
 }
 
 /* Style pour les carrés de statut */
@@ -243,15 +243,32 @@ input[type="radio"]:checked + .priority-dot {
     color: white !important;
     border: none !important;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center; /* Aligner les éléments à l'horizontale */
+    padding-left: 10px;
 }
 
 .task-checkbox {
     margin-right: 10px;
 }
 
+.list-group-item span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.list-group-item .status-dot,
+.list-group-item .priority-dot {
+    margin-right: 8px; /* Ajuster l'espacement si nécessaire */
+}
 .task-text {
     display: inline-block;
     margin-left: 10px;
+}
+
+/* Ajuster l'espacement entre les tâches */
+.list-group-item {
+    padding: 10px 15px;
 }
 
 /* Bouton "supprimer" */
