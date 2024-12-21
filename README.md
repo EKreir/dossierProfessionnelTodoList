@@ -13,7 +13,7 @@ Ceci est un petit projet qui fait référence à une to do list ordinaire conçu
 
 Aucune
 
-## Installation
+# Installation
 
 Etapes pour installer et démarrer le projet localement
 
